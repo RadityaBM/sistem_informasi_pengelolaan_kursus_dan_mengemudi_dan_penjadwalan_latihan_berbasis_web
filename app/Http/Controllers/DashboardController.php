@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
-
+        $user = Auth::user();
         switch ($user->role) {
             case 'siswa':
                 $siswa = DB::table('siswa')->where('id_pengguna', $user->id_pengguna)->first();
