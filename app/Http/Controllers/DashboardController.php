@@ -13,21 +13,33 @@ class DashboardController extends Controller
         switch ($user->role) {
             case 'siswa':
                 $siswa = DB::table('siswa')->where('id_pengguna', $user->id_pengguna)->first();
+
                 $daftar = $siswa ? DB::table('pendaftaran')
                     ->join('paket_kursus', 'paket_kursus.id_paket', '=', 'pendaftaran.id_paket')
-                    ->where('id_siswa', $siswa->id_siswa)->where('pendaftaran.status', 'aktif')
+                    ->where('id_siswa', $siswa->id_siswa)
+                    ->where('pendaftaran.status', 'aktif')
                     ->select('pendaftaran.*', 'paket_kursus.nama_paket')
-                    ->orderByDesc('id_pendaftaran')->first() : null;
+                    ->orderByDesc('id_pendaftaran')
+                    ->first() : null;
+
                 $berikut = $daftar ? DB::table('booking')
                     ->join('slot_jadwal', 'slot_jadwal.id_slot', '=', 'booking.id_slot')
                     ->join('pelatih', 'pelatih.id_pelatih', '=', 'slot_jadwal.id_pelatih')
                     ->join('mobil', 'mobil.id_mobil', '=', 'slot_jadwal.id_mobil')
                     ->where('booking.id_pendaftaran', $daftar->id_pendaftaran)
                     ->where('booking.status', 'terjadwal')
-                    ->orderBy('tanggal')->orderBy('jam_mulai')
+                    ->select(
+                        'slot_jadwal.tanggal',
+                        'slot_jadwal.jam_mulai',
+                        'slot_jadwal.jam_selesai',
+                        'pelatih.nama as nama_pelatih',
+                        'mobil.merek_model'
+                    )
+                    ->orderBy('slot_jadwal.tanggal')
+                    ->orderBy('slot_jadwal.jam_mulai')
                     ->first() : null;
-                return view('siswa.dashboard', compact('siswa', 'daftar', 'berikut'));
 
+                return view('siswa.dashboard', compact('siswa', 'daftar', 'berikut'));
             case 'pelatih':
                 $pelatih = DB::table('pelatih')->where('id_pengguna', $user->id_pengguna)->first();
                 $hariIni = $pelatih ? DB::table('slot_jadwal')
