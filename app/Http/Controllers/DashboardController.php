@@ -25,7 +25,6 @@ class DashboardController extends Controller
                     ->where('booking.id_pendaftaran', $daftar->id_pendaftaran)
                     ->where('booking.status', 'terjadwal')
                     ->orderBy('tanggal')->orderBy('jam_mulai')
-                    ->select('slot_jadwal.*', 'pelatih.nama as nama_pelatih', 'mobil.merek_model')
                     ->first() : null;
                 return view('siswa.dashboard', compact('siswa', 'daftar', 'berikut'));
 
