@@ -9,7 +9,7 @@
 @php $ini = strtoupper(substr(auth()->user()->username, 0, 2)); @endphp
 {{-- Versi WEB (layar lebar): sidebar. Versi MOBILE (layar kecil): navigasi bawah. Dipilih otomatis lewat CSS. --}}
 <aside class="sidebar rsp-side">
-  <div class="logo"><i>@include('partials.icons', ['n' => 'box'])</i> NAMA KURSUS</div>
+  <div class="logo"><i>@include('partials.icons', ['n' => 'box'])</i> KURSUS MENGEMUDI NATUNA MALANG</div>
   <div class="eyebrow">Menu</div>
   <nav class="nav">
     <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'on' : '' }}">@include('partials.icons', ['n' => 'home'])Beranda</a>

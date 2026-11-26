@@ -11,7 +11,7 @@
 @endphp
 <div class="shell">
   <aside class="sidebar">
-    <div class="logo"><i>@include('partials.icons', ['n' => 'box'])</i> NAMA KURSUS</div>
+    <div class="logo"><i>@include('partials.icons', ['n' => 'box'])</i> KURSUS MENGEMUDI NATUNA MALANG</div>
     <div class="eyebrow">Menu</div>
     <nav class="nav">
       <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'on' : '' }}">@include('partials.icons', ['n' => 'grid'])Dashboard</a>

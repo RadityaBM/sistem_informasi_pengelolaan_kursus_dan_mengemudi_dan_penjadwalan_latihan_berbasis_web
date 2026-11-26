@@ -7,7 +7,7 @@
 <body>
 <div class="login">
   <section class="art">
-    <div class="logo" style="margin:0"><i>@include('partials.icons', ['n' => 'box'])</i> NAMA KURSUS</div>
+    <div class="logo" style="margin:0"><i>@include('partials.icons', ['n' => 'box'])</i> KURSUS MENGEMUDI NATUNA MALANG</div>
     <div class="art-body">
       <h1>Belajar<br>mengemudi<br><em>tanpa ribet.</em></h1>
       <p>Booking jadwal, pantau kuota, dan kelola sesi latihan dalam satu sistem.</p>
@@ -36,7 +36,7 @@
         @error('password')<div class="err">{{ $message }}</div>@enderror</div>
       <button class="btn" type="submit">Masuk @include('partials.icons', ['n' => 'arrow'])</button>
       <p class="muted" style="text-align:center;font-size:12px;margin-top:16px">Lupa password? Hubungi Admin.</p>
-      <p class="muted" style="text-align:center;font-size:10px;letter-spacing:.1em;margin-top:28px;opacity:.6">&copy; NAMA KURSUS</p>
+      <p class="muted" style="text-align:center;font-size:10px;letter-spacing:.1em;margin-top:28px;opacity:.6">&copy; KURSUS MENGEMUDI NATUNA MALANG</p>
     </form>
   </section>
 </div>
